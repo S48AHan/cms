@@ -1,9 +1,37 @@
-import React from 'react'
+"use client";
+import Callback from "@/components/Callback";
+import React, { useCallback, useState } from "react";
 
 const Home = () => {
-  return (
-    <div className='w-full mt-5 text-center'>Home</div>
-  )
-}
+  const [adjective, setAdjective] = useState<number>(0);
 
-export default Home
+  const getAdjective = useCallback(
+    ()=>{
+        return "output "+adjective;
+    },
+    [],
+  )
+
+//   const getAdjective =()=>{
+//     return "output "+adjective;
+//     }
+  
+  return (
+    <>
+      <Callback msg={`important msg `} getAdjective={getAdjective} />
+      <div className="w-full flex flex-row justify-center ">
+        <button
+          className="border-blue-500 w-10 bg-gray-300"
+          onClick={() => {
+            setAdjective((curr) => curr + 1);
+          }}
+        >
+          {adjective}
+        </button>
+      </div>
+      <div className="w-full mt-5 text-center">Home</div>
+    </>
+  );
+};
+
+export default Home;

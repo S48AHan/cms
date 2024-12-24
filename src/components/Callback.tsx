@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
 
-const Callback = () => {
-  return (
-    <div>Callback</div>
-  )
+interface Props {
+  msg: string;
+  getAdjective: () => string;
 }
 
-export default Callback
+const Callback = ({ msg, getAdjective }: Props) => {
+  
+  return (
+    <>
+      <div> {msg}</div>
+      <button className="bg-slate-400" onClick={()=>{getAdjective()}}>{getAdjective()}</button>
+    </>
+  );
+};
+
+export default Callback;
